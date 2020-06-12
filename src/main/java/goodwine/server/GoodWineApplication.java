@@ -2,6 +2,7 @@ package goodwine.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /*import org.springframework.boot.CommandLineRunner;
 
@@ -29,6 +30,7 @@ public class GoodWineApplication {
 		 * you did not have to deal with configuring any plumbing or infrastructure.
 		 */
 		SpringApplication.run(GoodWineApplication.class, args);
+		
 	}
 	
 	/* usato per test
