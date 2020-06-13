@@ -3,7 +3,6 @@ package goodwine.server.controller;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import goodwine.server.persistenza.UtenteRepository;
@@ -14,21 +13,24 @@ public class UtenteController {
 	@Autowired 
 	UtenteRepository utenteRepo;//IoC
 	
-	
 	/**
 	 * 
 	 * nel body della richiesta devono essere IN JSON i valori dell' utente che si vuole registrare
 	 * 
-	 * query  : /utente/registrazione?username=username
+	 * query  : /utente/registrazione
 	 * body   : json dell' utente
 	 */
 	@RequestMapping("/registrazione")
-	public boolean registra(@RequestParam("username") String username, @RequestBody Utente utente) {
-		boolean registrato = false;
+	public Utente registra(@RequestBody Utente utente) {
+		String username = utente.getUsername();
 		
-		//logica di registrazione
+		Utente u = utenteRepo.findById(username).isPresent() ? utenteRepo.findById(username).get() : null;
 		
-		
-		return registrato;
+		if( u == null ) {//utente non esiste
+			
+			utenteRepo.save(utente);
+			return utente;//se lo registro faccio echo al client, null altrimenti
+			
+		}else return null;
 	}
 }
