@@ -1,7 +1,6 @@
 package goodwine.server.persistenza.test;
 
-import static org.junit.Assert.*;  
-
+import org.junit.jupiter.api.Assertions;
 import org.junit.Test;  
 import org.junit.runner.RunWith;  
 import org.springframework.beans.factory.annotation.Autowired;  
@@ -27,7 +26,7 @@ public class UtenteHibernateTest {
      
      employeeRepo.save(emp);  //registrazione
      
-     assertEquals("marcoCarola",employeeRepo.findById("marcoCarola").get().getUsername());
+     Assertions.assertEquals("marcoCarola",employeeRepo.findById("marcoCarola").get().getUsername());
     }  
 	
 	@Test  
@@ -37,7 +36,7 @@ public class UtenteHibernateTest {
 	    emp.setPassword("987654321");
 	    employeeRepo.save(emp);
 		Utente emp2 = employeeRepo.findById("ioSonoUnNuovoUtente").get();  
-        assertEquals("ioSonoUnNuovoUtente",emp2.getUsername());
+		Assertions.assertEquals("ioSonoUnNuovoUtente",emp2.getUsername());
     }
 	
 	@Test(expected = NoSuchElementException.class)
