@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import goodwine.server.persistenza.UtenteRepository;
 import goodwine.server.pojos.Utente;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 @RestController
 public class UtenteController {
 	@Autowired 
@@ -25,7 +26,8 @@ public class UtenteController {
 		String username = utente.getUsername();
 		
 		System.out.println("ricevuta richiesta");
-		
+		System.out.println("username "+utente.getUsername());
+		System.out.println("cognome "+utente.getCognome());
 		
 		Utente u = utenteRepo.findById(username).isPresent() ? utenteRepo.findById(username).get() : null;
 		
@@ -34,6 +36,6 @@ public class UtenteController {
 			utenteRepo.save(utente);
 			return utente;//se lo registro faccio echo al client, null altrimenti
 			
-		}else return null;
+		}else return new Utente();
 	}
 }

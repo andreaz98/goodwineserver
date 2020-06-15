@@ -2,7 +2,7 @@ package goodwine.server.controller.test;
 
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
-import org.junit.Test;  
+import org.junit.jupiter.api.Test;  
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -35,14 +35,6 @@ public class UtenteControllerTest {
 	@Test
 	public void registrazioneUtenteSuccesso() throws Exception {
 		Utente u = new Utente();
-		u.setCognome("giggi");
-		u.setNome("lolli");
-		u.setDataNascita(Date.from(Instant.now()));
-		u.setEmail("aa@bb.it");
-		u.setEnologo(false);
-		u.setTipoUtente("COMMERCIANTE");
-		u.setTelefono("423567897");
-		u.setIndirizzo("via ciao");
 		u.setUsername("giggino");
 		u.setPassword("23456789");
 		
@@ -53,8 +45,7 @@ public class UtenteControllerTest {
 				    		.andExpect(status().isOk())
 				    		.andReturn();
 					
-		Assertions.assertTrue(res.getResponse().getContentAsString().contains("giggi"));
-		
+		Assertions.assertTrue(res.getResponse().getContentAsString().contains("giggino"));
 	}
 	
 	

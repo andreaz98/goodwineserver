@@ -12,7 +12,6 @@ import java.io.Serializable;
 
 @Entity(name="UTENTI")
 public class Utente implements Serializable{
-	private static final long serialVersionUID = 5351902087336563885L;
 
 	@Id
 	@Column(name="username")
@@ -35,9 +34,10 @@ public class Utente implements Serializable{
 	@Column(name="tipoutente")
 	private String tipoUtente;//COMMERCIANTE, RISTORATORE, ALBERGATORE etc.
 	@Column(name="datanascita")
-	private Date dataNascita;
+	private long dataNascita;
 	@Column(name="isenologo")
 	private boolean isEnologo;
+	
 	
 	//accessors
 	public String getUsername() {
@@ -88,10 +88,10 @@ public class Utente implements Serializable{
 	public void setTipoUtente(String tipoUtente) {
 		this.tipoUtente = tipoUtente;
 	}
-	public Date getDataNascita() {
+	public long getDataNascita() {
 		return dataNascita;
 	}
-	public void setDataNascita(Date dataNascita) {
+	public void setDataNascita(long dataNascita) {
 		this.dataNascita = dataNascita;
 	}
 	public boolean isEnologo() {
@@ -100,5 +100,6 @@ public class Utente implements Serializable{
 	public void setEnologo(boolean isEnologo) {
 		this.isEnologo = isEnologo;
 	}
+	
 	
 }

@@ -1,7 +1,7 @@
 package goodwine.server.persistenza.test;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.Test;  
+import org.junit.jupiter.api.Test;  
 import org.junit.runner.RunWith;  
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;  
@@ -39,7 +39,7 @@ public class UtenteHibernateTest {
 		Assertions.assertEquals("ioSonoUnNuovoUtente",emp2.getUsername());
     }
 	
-	@Test(expected = NoSuchElementException.class)
+	@Test
     public void testUtenteInesistente()  
     {    
      employeeRepo.findById("ioNonEsisto!!").get();
