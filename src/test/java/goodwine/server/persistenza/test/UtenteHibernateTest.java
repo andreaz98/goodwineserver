@@ -10,8 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import goodwine.server.persistenza.UtenteRepository;
 import goodwine.server.pojos.Utente;
 
-import java.util.NoSuchElementException;
-
 @RunWith(SpringJUnit4ClassRunner.class) @SpringBootTest
 public class UtenteHibernateTest {
 	@Autowired  

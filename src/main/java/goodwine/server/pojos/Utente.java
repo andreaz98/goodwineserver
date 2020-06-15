@@ -1,6 +1,5 @@
 package goodwine.server.pojos;
 
-import java.util.Date;
 import javax.persistence.*;
 
 import java.io.Serializable;

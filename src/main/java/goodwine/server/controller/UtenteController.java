@@ -42,7 +42,7 @@ public class UtenteController {
 		Optional<Utente> user = utenteRepo.findById(utente.getUsername());
 		
 		if( user.isPresent() ) {
-			if( user.get().getPassword().equals(utente.getPassword()) ) {
+			if( user.get().getPassword().equals( utente.getPassword() ) ) {
 				return true;
 			}
 		}
