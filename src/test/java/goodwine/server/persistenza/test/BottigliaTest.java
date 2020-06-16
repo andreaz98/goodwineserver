@@ -10,12 +10,17 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;  
 
 import goodwine.server.persistenza.BottigliaRepository;
-import goodwine.server.pojos.Bottiglia;
+import goodwine.server.persistenza.BottigliaAggiornataRepository;
 
+import goodwine.server.pojos.Bottiglia;
+import goodwine.server.pojos.BottigliaAggiornata;
+import goodwine.server.pojos.BottigliaAggiornataId;
 @RunWith(SpringJUnit4ClassRunner.class) @SpringBootTest
 public class BottigliaTest {
 	@Autowired
 	BottigliaRepository bottigliaRepo;
+	@Autowired
+	BottigliaAggiornataRepository bottigliaARepo;
 	
 	@Test
 	public void inserimentiMultipliBottiglia() {
@@ -25,7 +30,7 @@ public class BottigliaTest {
 		b.setNomeCantina("cantina bella");
 		
 		bottigliaRepo.save(b);
-		Assertions.assertTrue(bottigliaRepo.findById(1L).get().getLuogo().equals("Morciano"));
+		Assertions.assertTrue(bottigliaRepo.findById(2L).get().getLuogo().equals("Morciano"));
 		
 		Bottiglia c = new Bottiglia();
 		c.setLuogo("Isola");
@@ -33,8 +38,56 @@ public class BottigliaTest {
 		c.setNomeCantina("cantina non bella");
 		
 		bottigliaRepo.save(c);
-		Assertions.assertTrue(bottigliaRepo.findById(2L).get().getLuogo().equals("Isola"));
+		Assertions.assertTrue(bottigliaRepo.findById(3L).get().getLuogo().equals("Isola"));
 	}
 	
+	@Test
+	public void ottenimentoAggiornamentiPerUnaBottiglia() {
+		inizializzazioneBottigliaEAggiornamenti();
+		Assertions.assertEquals( bottigliaRepo.findById(1L).get().bottigliaaggiornamenti.size(), 2 );
+	}
+	
+	private void inizializzazioneBottigliaEAggiornamenti() {
+		Bottiglia bott = new Bottiglia();
+		bott.setLuogo("Luogo bello");
+		bott.setNome("vino bello");
+		bott.setNomeCantina("cantina bella");
+		
+		bottigliaRepo.save(bott);
+		
+		//aggiornamento 1
+		BottigliaAggiornata ba = new BottigliaAggiornata();
+		
+		long now = System.currentTimeMillis();
+		
+		ba.bottiglia = bott;
+		
+		ba.id = new BottigliaAggiornataId();
+		ba.id.setDataRegistrazione(now);
+		ba.id.setIdBottiglia(1L);
+		
+		
+		ba.setInclinazione(45);
+		ba.setRaggiuv(false);
+		ba.setUmidita(80);
+		ba.setTemperatura(22);
+		
+		bottigliaARepo.save(ba);
+		
+		//aggiornamento2 (1h dopo per la stessa bottiglia)
+		BottigliaAggiornata ba2 = new BottigliaAggiornata();
+		ba2.bottiglia = bott;
+		
+		ba2.id = new BottigliaAggiornataId();
+		ba2.id.setDataRegistrazione(now + 60*60*1000);
+		ba2.id.setIdBottiglia(1L);
+		
+		ba2.setInclinazione(52);
+		ba2.setRaggiuv(false);
+		ba2.setUmidita(90);
+		ba2.setTemperatura(18);
+		
+		bottigliaARepo.save(ba2);
+	}
 	
 }

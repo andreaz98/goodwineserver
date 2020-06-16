@@ -1,13 +1,24 @@
 package goodwine.server.pojos;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.ArrayList;
+import java.io.Serializable;
 
-@Entity(name = "BOTTIGLIE")
+@Entity(name="bottiglie")
 public class Bottiglia implements Serializable {
-	@Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Id
+	@GeneratedValue
+	@Column(name="idbottiglia")
 	private Long id;
 	
+	
+	//public Collection<BottigliaAggiornata> getAggiornamenti() { return bottigliaaggiornamenti; }
+	//public void setAggiornamenti(Collection<BottigliaAggiornata> valore) { this.bottigliaaggiornamenti = valore; }
+	@OneToMany( fetch = FetchType.EAGER, mappedBy="bottiglia" )
+	public Collection<BottigliaAggiornata> bottigliaaggiornamenti = new ArrayList<BottigliaAggiornata>();
+	
+	//bottiglia
 	@Column(name="filtrazione")
 	private String filtrazione;
 	
@@ -15,7 +26,7 @@ public class Bottiglia implements Serializable {
 	private double tempOttimale;
 	
 	@Column(name="umiditaottimale")
-	private int umiditaOttimale;
+	private double umiditaOttimale;
 	
 	@Column(name="inclinazioneottimale")
 	private double inclinazioneOttimale;
@@ -40,10 +51,7 @@ public class Bottiglia implements Serializable {
 	
 	@Column(name="tipologia")
 	private String tipologia;
-	
-	public Long getId() { return id; }
-	public void setId(Long val) { id = val; }
-	
+
 	public String getFiltrazione() {
 		return filtrazione;
 	}
@@ -60,11 +68,11 @@ public class Bottiglia implements Serializable {
 		this.tempOttimale = tempOttimale;
 	}
 
-	public int getUmiditaOttimale() {
+	public double getUmiditaOttimale() {
 		return umiditaOttimale;
 	}
 
-	public void setUmiditaOttimale(int umiditaOttimale) {
+	public void setUmiditaOttimale(double umiditaOttimale) {
 		this.umiditaOttimale = umiditaOttimale;
 	}
 
@@ -131,6 +139,12 @@ public class Bottiglia implements Serializable {
 	public void setTipologia(String tipologia) {
 		this.tipologia = tipologia;
 	}
-	
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

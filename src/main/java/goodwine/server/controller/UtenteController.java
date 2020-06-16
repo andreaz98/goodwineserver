@@ -27,10 +27,9 @@ public class UtenteController {
 		
 		Utente u = utenteRepo.findById(username).isPresent() ? utenteRepo.findById(username).get() : null;
 		
-		if( u == null ) {//utente non esiste
-			System.out.println("creo utente");
-			utenteRepo.save(utente);
-			return utente;//se lo registro faccio echo al client, altrimenti invio utente vuoto
+		if( u == null ) {
+			
+			return utenteRepo.save(utente);
 			
 		}else return new Utente();
 		
