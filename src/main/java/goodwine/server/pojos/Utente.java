@@ -1,13 +1,8 @@
 package goodwine.server.pojos;
 
 import javax.persistence.*;
-
+import java.util.Collection;
 import java.io.Serializable;
-/**
- * 
- * goodwine.beans contiene i bean per Hibernate
- *
- */
 
 @Entity(name="utenti")
 public class Utente implements Serializable{
@@ -15,6 +10,9 @@ public class Utente implements Serializable{
 	@Id
 	@Column(name="username")
 	private String username;
+	
+	@ManyToMany
+	Collection<BottigliaAggiornata> storico;
 	
 	@Column(name="password")
 	private String password;

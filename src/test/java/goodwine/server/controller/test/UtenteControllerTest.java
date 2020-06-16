@@ -52,7 +52,7 @@ public class UtenteControllerTest {
 	}
 	
 	@Test
-	public void loginSuccesso()throws Exception {
+	public void loginSuccesso() throws Exception {
 		Utente u = new Utente();
 		u.setUsername("giggino");
 		u.setPassword("23456789");
@@ -74,14 +74,12 @@ public class UtenteControllerTest {
 		u.setUsername("utenteInesistentegiggino");
 		u.setPassword("23456789");
 		
-		//utenteRepo.save(u);
-		
 		MvcResult res =  this.mockMvc.perform(post("/utente/login")
 							 .contentType(MediaType.APPLICATION_JSON)
 							 .content(asJsonString(u)))
-				    .andDo(print())
-				    .andExpect(status().isOk())
-				    .andReturn();
+				    	 .andDo(print())
+				    	 .andExpect(status().isOk())
+				    	 .andReturn();
 		
 		Assertions.assertTrue(res.getResponse().getContentAsString().contains("false"));
 	}

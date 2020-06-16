@@ -40,6 +40,6 @@ public class UtenteHibernateTest {
 	@Test
     public void testUtenteInesistente()  
     {    
-     employeeRepo.findById("ioNonEsisto!!").get();
+     Assertions.assertFalse(employeeRepo.findById("ioNonEsisto!!").isPresent());
     } 
 }
