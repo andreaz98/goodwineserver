@@ -1,6 +1,5 @@
 package goodwine.server.persistenza.test;
 
-import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -15,31 +14,13 @@ import goodwine.server.persistenza.BottigliaAggiornataRepository;
 import goodwine.server.pojos.Bottiglia;
 import goodwine.server.pojos.BottigliaAggiornata;
 import goodwine.server.pojos.BottigliaAggiornataId;
-@RunWith(SpringJUnit4ClassRunner.class) @SpringBootTest
+//@RunWith(SpringJUnit4ClassRunner.class) 
+@SpringBootTest
 public class BottigliaTest {
 	@Autowired
 	BottigliaRepository bottigliaRepo;
 	@Autowired
 	BottigliaAggiornataRepository bottigliaARepo;
-	
-	@Test
-	public void inserimentiMultipliBottiglia() {
-		Bottiglia b = new Bottiglia();
-		b.setLuogo("Morciano");
-		b.setNome("vino bello");
-		b.setNomeCantina("cantina bella");
-		
-		bottigliaRepo.save(b);
-		Assertions.assertTrue(bottigliaRepo.findById(2L).get().getLuogo().equals("Morciano"));
-		
-		Bottiglia c = new Bottiglia();
-		c.setLuogo("Isola");
-		c.setNome("vino  non bello");
-		c.setNomeCantina("cantina non bella");
-		
-		bottigliaRepo.save(c);
-		Assertions.assertTrue(bottigliaRepo.findById(3L).get().getLuogo().equals("Isola"));
-	}
 	
 	@Test
 	public void ottenimentoAggiornamentiPerUnaBottiglia() {
