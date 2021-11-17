@@ -1,3 +1,5 @@
+This is the server side implementation of the Software Engineering's course project of the bachelor's degree in Computer Engineering @ Alma Mater Studiorum - University Of Bologna
+
 # Per iniziare
 
 1. Da Eclipse, ancora prima di fare checkout di questo progetto, andate su eclipse marketplace
