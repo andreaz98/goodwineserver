@@ -10,6 +10,6 @@ e installatevi Spring Tool Suite
 ### Per lanciare questo server Spring Boot
 1. da terminale posizionatevi nella cartella iniziale dove si trova anche il file mvnw
 
-2. linux/macOS: una volta che siete in quella cartella digitate sul prompt: ./mvnw spring-boot:run (la controparte per Windows è mvnw.cmd)
+2. linux/macOS: una volta che siete in quella cartella digitate sul prompt: `$ ./mvnw spring-boot:run` (la controparte per Windows è mvnw.cmd)
 
 3. il server è partito, da browser digitate localhost:8080
