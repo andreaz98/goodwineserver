@@ -5,7 +5,7 @@ Questo server si basa sull'architettura REST. Potete trovare facilmente tutti gl
 
 `$ git clone https://github.com/andreaz98/goodwineserver` 
 
-e aggiungere o modificare gli endpoint e il codice come vi pare.
+e aggiungere o modificare gli endpoint e il codice come vi pare. Ovviamente non vale usare il mio codice per trarne profitto.
 
 ### Per iniziare
 
