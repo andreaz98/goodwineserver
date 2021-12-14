@@ -1,7 +1,7 @@
 This is my server-side implementation of the Software Engineering's course project of the bachelor's degree in Computer Engineering @ Alma Mater Studiorum - University Of Bologna.
 
 # Good Wine Server - RESTful API
-Questo server si basa sull'architettura REST. Potete trovare facilmente tutti gli endpoint supportati nella sezione dei test. Potete creare la parte client usando il linguaggio di programmazione che più vi aggrada e dialogare con questo server attraverso gli endpoint implementati. Sentitevi liberi di fare 
+Questo server si basa sull'architettura REST. Potete trovare facilmente tutti gli endpoint supportati nella sezione dei test. Potete creare la parte client usando il linguaggio di programmazione che più vi aggrada e dialogare con questo server attraverso gli endpoint implementati. Sentitevi liberi di fare checkout
 
 `$ git clone https://github.com/andreaz98/goodwineserver` 
 
